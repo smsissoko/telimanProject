@@ -17,4 +17,5 @@ import lombok.ToString;
 public class Compagnie implements Serializable{
 	@Id @GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
+	private String nom;
 }
