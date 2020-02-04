@@ -15,20 +15,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
 @Entity
 @Data @AllArgsConstructor @NoArgsConstructor @ToString
-
-public class Client implements Serializable{
+public class Agence implements Serializable {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	@Column(length=75)
 	private String nom;
-	@Column(length=75)
-	private String prenom;
-	private String numeroCarte;
-	private int telephone;
+	private double longitude,latitude,altitude;
 	private String addresse;
-	@OneToMany(mappedBy="client")
-	private Collection<Reservation>reservations;
+	private int telephone;
+	@ManyToOne
+	private Compagnie compagnie;
+	@OneToMany(mappedBy="agence")
+	private Collection<Agence_Voyage>agence_voyages;
+	@OneToMany(mappedBy="agence")
+	private Collection<Agent>agents;
 
 }
